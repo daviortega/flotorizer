@@ -1,0 +1,54 @@
+{
+  "name": "flotorization",
+  "version": "1.0.0",
+  "description": "Code for flotorization.org",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm public/*js public/*html; webpack --progress",
+    "start": "node_modules/foreman/nf.js start",
+    "server:dev": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daviortega/flotorization.git"
+  },
+  "keywords": [
+    "proof-of-existance",
+    "florincoin",
+    "cryptocurrenty"
+  ],
+  "author": "Davi Ortega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daviortega/flotorization/issues"
+  },
+  "homepage": "https://github.com/daviortega/flotorization#readme",
+  "dependencies": {
+    "bitcoin": "^3.0.1",
+    "blob-stream": "^0.1.3",
+    "bootstrap": "^3.3.7",
+    "crypto-js": "^3.1.9-1",
+    "cryptojs": "^2.5.3",
+    "css-loader": "^0.28.7",
+    "express": "^4.16.1",
+    "file-loader": "^1.1.5",
+    "foreman": "^2.0.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
+    "json-loader": "^0.5.7",
+    "multer": "^1.3.0",
+    "node-localstorage": "^1.3.0",
+    "pdfkit": "^0.8.3",
+    "qr-image": "^3.2.0",
+    "style-loader": "^0.18.2",
+    "transform-loader": "^0.2.4",
+    "webpack": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}

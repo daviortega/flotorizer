@@ -1,0 +1,18 @@
+<html>
+    <header>
+        <title> Flotorization </title>
+    </header>
+    <body>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <h1> Welcome to the Flotorizer - A notorizer based on FLO blockchain</h1>
+
+        <form action="/flotorize" method="POST" enctype="multipart/form-data">
+            Select an image to upload:
+            <input type="file" name="image"> 
+            <input type="submit" value="Upload Document">
+        </form>
+
+        
