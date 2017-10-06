@@ -48,6 +48,6 @@ app.get('/flotorize', function(req, res) {
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'assets')))
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
 	console.log('Example app listening on port 3000!')
 })
