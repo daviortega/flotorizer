@@ -16,10 +16,10 @@ npm install
 Now, you need to make and configure a file `.env` with the following information like this:
 
 ```bash
-"username" FLOWALLET_USERNAME=your_user_name
-"password" FLOWALLET_PASSWORD=your_password
-"address1" FLOWALLET_ADDRESS1=one_flo_address
-"address2" FLOWALLET_ADDRESS2=two_flo_address
+FLOWALLET_USERNAME=your_user_name
+FLOWALLET_PASSWORD=your_password
+FLOWALLET_ADDRESS1=one_flo_address
+FLOWALLET_ADDRESS2=two_flo_address
 ```
 
 Build the front-end:
