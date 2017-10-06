@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm public/*js public/*html; webpack --progress",
     "start": "node_modules/foreman/nf.js start",
-    "server:dev": "webpack-dev-server --open"
+    "server:dev": "webpack-dev-server --open",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "repository": {
     "type": "git",
