@@ -3,6 +3,10 @@
 
 const CryptoJS = require('crypto-js')
 
+let analytics = require('universal-ga')
+analytics.initialize('UA-107703605-1')
+
+
 let kDefaults = {
 	hashAlgorithm: 'sha512',
 	hashEncoding: 'hex'

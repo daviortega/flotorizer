@@ -45,6 +45,7 @@
     "qr-image": "^3.2.0",
     "style-loader": "^0.18.2",
     "transform-loader": "^0.2.4",
+    "universal-ga": "^1.1.0",
     "webpack": "^3.6.0"
   },
   "devDependencies": {
