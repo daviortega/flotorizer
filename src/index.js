@@ -3,10 +3,6 @@
 
 const CryptoJS = require('crypto-js')
 
-let analytics = require('universal-ga')
-analytics.initialize('UA-107703605-1')
-
-
 let kDefaults = {
 	hashAlgorithm: 'sha512',
 	hashEncoding: 'hex'
@@ -14,6 +10,7 @@ let kDefaults = {
 
 require('../node_modules/bootstrap/dist/js/bootstrap.min.js')
 require('../node_modules/bootstrap/dist/css/bootstrap.min.css')
+require('./ga.js')
 require('./style.css')
 
 let title = document.createElement('h1')
