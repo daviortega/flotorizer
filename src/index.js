@@ -51,7 +51,7 @@ fileForm.addEventListener('change', function() {
     			thisHash = CryptoJS.SHA512(wordArray).toString().toUpperCase(),
 				xhr = new XMLHttpRequest(),
 				getReq = 'f=' + file.name + '&' + 'hs=' + thisHash,
-				url = 'http://localhost:3000/flotorize?' + getReq
+				url = '/flotorize?' + getReq
 			let element = document.createElement('a')
 			element.setAttribute('href', url)
 			element.style.display = 'none'
