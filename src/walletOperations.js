@@ -81,8 +81,13 @@ class MyWallet {
 				}
 				let req = http.request(options, (response) => {
 
+					let alldata = ''
 					response.on('data', (d) => {
-						let val = JSON.parse(d).balance
+						alldata += d
+					})
+
+					response.on('end', () => {
+						let val = JSON.parse(alldata).balance
 						self.addresses[i].val = Math.abs(val)
 						answers++
 						console.log(address.hash + ' - ' + val)
