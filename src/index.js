@@ -45,8 +45,8 @@ fileForm.addEventListener('change', function() {
 	reader.onloadend = function(event) {
 		if (event.target.readyState === FileReader.DONE) {
 			let wordArray = CryptoJS.lib.WordArray.create(event.target.result),
-    			thisHash = CryptoJS.SHA512(wordArray).toString().toUpperCase(),
-				xhr = new XMLHttpRequest(),
+				thisHash = CryptoJS.SHA512(wordArray).toString()
+					.toUpperCase(),
 				getReq = 'f=' + file.name + '&' + 'hs=' + thisHash,
 				url = '/flotorize?' + getReq
 			let element = document.createElement('a')
@@ -68,4 +68,16 @@ fileFormLabel.innerHTML = 'Choose a file'
 fileFormLabel.appendChild(fileForm)
 document.body.appendChild(fileFormLabel)
 
+let flotorized = document.createElement('div')
+flotorized.innerHTML = '___ files flotorized'
+document.body.appendChild(flotorized)
 
+let xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function() {
+	if (xhr.readyState === 4) {
+		flotorized.innerHTML = xhr.response + ' files flotorized'
+	}
+}
+
+xhr.open('GET', '/stats', true)
+xhr.send()
