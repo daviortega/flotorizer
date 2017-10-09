@@ -16,7 +16,15 @@ let username = process.env.FLOWALLET_USERNAME,
 let WalletOperations = require('./src/walletOperations.js')
 
 let wallet = new WalletOperations(username, password, address1, address2)
+
 wallet.init()
+
+app.get('/stats', function(req, res, next) {
+	wallet.wallet.then((carteira) => {
+		res.send(wallet.flotorizations.toString())
+		next()
+	})
+})
 
 app.get('/flotorize', function(req, res) {
 	console.log('got the request')
