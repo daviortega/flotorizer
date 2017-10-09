@@ -21,8 +21,10 @@ wallet.init()
 
 app.get('/stats', function(req, res, next) {
 	wallet.wallet.then((carteira) => {
-		res.send(wallet.flotorizations.toString())
-		next()
+		wallet.refreshStats().then(() => {
+			res.send(wallet.flotorizations.toString())
+			next()
+		})
 	})
 })
 
