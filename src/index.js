@@ -15,7 +15,7 @@ require('./style.css')
 
 let title = document.createElement('h1')
 title.classList.add('title')
-title.innerHTML = 'Flotorizer 1.0-beta'
+title.innerHTML = 'Flotorizer 1.0.1-beta'
 document.body.appendChild(title)
 
 let logoDiv = document.createElement('div')
@@ -69,13 +69,13 @@ fileFormLabel.appendChild(fileForm)
 document.body.appendChild(fileFormLabel)
 
 let flotorized = document.createElement('div')
-flotorized.innerHTML = '___ files flotorized'
+flotorized.innerHTML = 'Files flotorized: calculating...'
 document.body.appendChild(flotorized)
 
 let xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function() {
 	if (xhr.readyState === 4) {
-		flotorized.innerHTML = xhr.response + ' files flotorized'
+		flotorized.innerHTML = 'Files flotorized: ' + xhr.response
 	}
 }
 
