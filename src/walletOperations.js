@@ -42,25 +42,6 @@ class MyWallet {
 		})
 	}
 
-	refreshStats() {
-		return new Promise((res, rej) => {
-			this.wallet.then((wallet) => {
-				wallet.refreshBalances
-				this.getBalances().then((balances) => {
-					this.balance = balances.reduce((a, b) => {
-						return a.val + b.val
-					})
-					console.log(this.balance)
-					let initial = 1.99052799
-					let previous = 0
-					this.flotorizations = previous + Math.floor((initial - this.balance) * 1000)
-					console.log(this.flotorizations)
-					res()
-				})
-			})
-		})
-	}
-
 	pushToBlockChain(msg, execute = true) {
 		return new Promise((res, rej) => {
 			this.wallet.then((wallet) => {

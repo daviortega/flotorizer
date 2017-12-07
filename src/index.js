@@ -69,13 +69,13 @@ fileFormLabel.appendChild(fileForm)
 document.body.appendChild(fileFormLabel)
 
 let flotorized = document.createElement('div')
-flotorized.innerHTML = '___ files flotorized'
+flotorized.innerHTML = 'Files flotorized: calculating...'
 document.body.appendChild(flotorized)
 
 let xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function() {
 	if (xhr.readyState === 4) {
-		flotorized.innerHTML = xhr.response + ' files flotorized'
+		flotorized.innerHTML = 'Files flotorized: ' + xhr.response
 	}
 }
 
