@@ -2,11 +2,10 @@
 
 require('./SimpleWalletFlorincoin.js')
 
-const PDFDocument = require('pdfkit'),
-	path = require('path'),
-	fs = require('fs'),
-	https = require('https'),
-	qr = require('qr-image')
+const PDFDocument = require('pdfkit')
+const path = require('path')
+const fs = require('fs')
+const qr = require('qr-image')
 
 exports.flotorize = function(filename, hashString, wallet) {
 	return new Promise(function(res, rej) {
@@ -21,8 +20,8 @@ exports.flotorize = function(filename, hashString, wallet) {
 
 			let doc = new PDFDocument
 			console.log('just created the instance')
-			
-			doc//.translate(-200, -500)
+
+			doc
 				.scale(1)
 				.fontSize(30)
 				.text('Flotorizer 1.0', 225, 20)
@@ -32,18 +31,18 @@ exports.flotorize = function(filename, hashString, wallet) {
 				.text('A document\'s sha-512 hash has just been inserted in the Florincoin blockchain. This means that a file with a specific format and content that yields to this specific hash existed at least prior to the date of the transaction. This is a proof-of-existance of such a file. Blockchains in cryptocurrencies are virtually impossible to be tampered with and this record will be available for verification virtually forever.')
 
 			doc.save()
-			
+
 			doc.translate(50, 0)
 				.image(path.resolve(__dirname, 'flotorizer1.png'), 0, 15, {scale: 0.3})	
-			
+
 			let qrtx = qr.svgObject('https://florincoin.info/tx/' + data)
 
 			doc.translate(210, 500).scale(2)
 				.path(qrtx.path)
 				.fill('black', 'even-odd')
-   				.stroke()
+				.stroke()
 				.restore()
-				
+
 			doc.translate(-200, 150)
 				.text('The document\'s hash is: ')
 				.fontSize(8)
@@ -62,8 +61,6 @@ exports.flotorize = function(filename, hashString, wallet) {
 				.text('https://florincoin.info/tx/' + data, {width: 600})
 				.moveDown()
 				.text('Or scan the QR-code bellow.')
-
-
 
 			doc.pipe(tempOutput)
 			doc.end()
