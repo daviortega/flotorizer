@@ -15,7 +15,7 @@ require('./style.css')
 
 let title = document.createElement('h1')
 title.classList.add('title')
-title.innerHTML = 'Flotorizer 1.0-beta'
+title.innerHTML = 'Flotorizer 1.0.1-beta'
 document.body.appendChild(title)
 
 let logoDiv = document.createElement('div')
