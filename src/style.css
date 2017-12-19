@@ -1,6 +1,16 @@
 body {
-    display: block;
-    text-align: center;
+    background-image: url(http://www.designing-science-development.com/flotorizer/wp-content/uploads/2017/12/flotorizer.gif);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: left;
+    padding: 3vw;
+    color: #fff;
+    font-family: Roboto;
+    /* font-size: 50px; */
+    line-height: 66px;
+    font-weight: 300;
 }
 
 .logo {
