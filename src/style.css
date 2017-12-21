@@ -1,37 +1,89 @@
 body {
-    display: block;
-    text-align: center;
+    background-image: url(http://www.designing-science-development.com/flotorizer/wp-content/uploads/2017/12/flotorizer.gif);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: left;
+    padding: 3vw;
+    color: #fff;
+    font-family: Roboto;
+    /* font-size: 50px; */
+    line-height: 66px;
+    font-weight: 300;
 }
 
-.logo {
-    position: absolute;
-    top: 100px;
-    left: 50%;
+div {
+    font-family: roboto;
+    letter-spacing: 1px;
+    margin-left: 150px;
+}
 
+
+
+h1, h1 {
+    font-size: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    display: inline;
+    letter-spacing: 1px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}
+
+h2.title2 {
+    font-family: roboto;
+    font-weight: 100;
+    font-size: 50px;
+    line-height: 66px;
+    max-width: 600px;
+    margin-left: 150px;
+    margin-top: 6vw;
+}
+
+h3.title3 {
+    font-family: roboto;
+    font-weight: 100;
+    margin-left: 150px;
+    font-size: 19px;
+}
+
+.btn-primary {
+    position: absolute;
+    left: 3vw;
+    top: 450px;
     width: 300px;
-    margin-left: -150px;
+    height: 40px;
+    margin-left: 0px;
+    margin-top: -20px;
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+    cursor: pointer;
+}
+
+img.logo {
+    position: fixed;
+    top: 0px;
+    right: 3vw;
+    max-width: 10vw;
+    top: 40px;
+}
+
+label#fileFormLabel {
+    line-height: 1;
+    height: auto;
+    padding: 20px 10px;
+    margin-left: 150px;
+}
+
+label#fileFormLabel:hover {
+    background: #2e6785;
+    border: 1px solid #2e6785;
 }
 
 .hashed {
     display: block;
     text-align: center;
-
     margin-top: 450px;
-}
-
-.btn-primary {
-    position:absolute;
-    left:50%;
-    top:450px;
-    width: 300px;
-    height: 40px;
-
-    margin-left: -150px;
-    margin-top: -20px;
-
-    background-color: #33373d;
-    border-color: #33373d;
-    color: #bba600;
-
-    cursor: pointer;
 }
