@@ -15,13 +15,24 @@ require('./style.css')
 
 let title = document.createElement('h1')
 title.classList.add('title')
-title.innerHTML = 'Flotorizer 1.0.2-beta'
+title.innerHTML = 'Flotorizer'
 document.body.appendChild(title)
 
-let logoDiv = document.createElement('div')
+let title2 = document.createElement('h2')
+title2.classList.add('title2')
+title2.innerHTML = 'The Future of Document Notorization is here'
+document.body.appendChild(title2)
+
+let title3 = document.createElement('h3')
+title3.classList.add('title3')
+title3.innerHTML = ' Secure documents and notarize any file within the FLO blockchain.'
+document.body.appendChild(title3)
+
+
+let logoDiv = document.createElement('div') 
 let logo = document.createElement('img')
 logo.classList.add('logo')
-logo.setAttribute('src', 'flotorizer1.png')
+logo.setAttribute('src', 'flo-logo.png')
 logoDiv.appendChild(logo)
 document.body.appendChild(logoDiv)
 
