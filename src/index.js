@@ -20,7 +20,7 @@ document.body.appendChild(title)
 
 let title2 = document.createElement('h2')
 title2.classList.add('title2')
-title2.innerHTML = 'The Future of Document Notorization is here'
+title2.innerHTML = 'The Future of Document Notarization is here'
 document.body.appendChild(title2)
 
 let title3 = document.createElement('h3')

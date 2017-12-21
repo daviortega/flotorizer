@@ -1,5 +1,10 @@
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
 body {
-    background-image: url(http://www.designing-science-development.com/flotorizer/wp-content/uploads/2017/12/flotorizer.gif);
+    background: url(http://www.designing-science-development.com/flotorizer/wp-content/uploads/2017/12/flotorizer.gif) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -51,11 +56,11 @@ h3.title3 {
 .btn-primary {
     position: absolute;
     left: 3vw;
-    top: 450px;
+    top: 400px;
     width: 300px;
     height: 40px;
     margin-left: 0px;
-    margin-top: -20px;
+    margin-top: 10vh;
     background-color: transparent;
     border-color: #fff;
     color: #fff;
