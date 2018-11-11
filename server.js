@@ -8,14 +8,9 @@ const flotorize = require('./src/flotorize.js').flotorize
 
 const app = express()
 
-let username = process.env.FLOWALLET_USERNAME,
-	password = process.env.FLOWALLET_PASSWORD,
-	address1 = process.env.FLOWALLET_ADDRESS1,
-	address2 = process.env.FLOWALLET_ADDRESS2
-
 let WalletOperations = require('./src/walletOperations.js')
 
-let wallet = new WalletOperations(username, password, address1, address2)
+let wallet = new WalletOperations()
 
 wallet.init()
 const AH = require('./src/AlexandriaHelper')
