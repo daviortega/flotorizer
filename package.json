@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm public/*js public/*html; webpack --progress",
+    "install": "npm --python=python2 install",    
     "postinstall": "npm run build",
     "start": "node_modules/foreman/nf.js start",
     "server:dev": "webpack-dev-server --open",
