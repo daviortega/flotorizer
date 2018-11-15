@@ -4,7 +4,7 @@ const HDMW = require('oip-hdmw')
 const Wallet = HDMW.Wallet;
 
 const networks = HDMW.Networks;
-const address  = new HDMW.Address("ocCQzLAopzWGmYxQMKQ5xLZDV2e62nEC5G", networks.flo_testnet, false);
+const address  = new HDMW.Address("FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h", networks.flo, false);
 
 module.exports =
 class MyWallet {
@@ -19,7 +19,7 @@ class MyWallet {
 	init() {
 		this.wallet = new Promise((resolve, reject) => {
 			
-			console.log("My Wallets Bitcoin Main Address: ", 'ocCQzLAopzWGmYxQMKQ5xLZDV2e62nEC5G');
+			console.log("My Wallets Bitcoin Main Address: ", 'FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h');
 
 			address.updateState().then((addr) => {
 
@@ -40,19 +40,19 @@ class MyWallet {
 
 		return new Promise((res, rej) => {
 
-			var myWallet = new Wallet('vanish noise travel buzz neutral disagree powder spy hub tree link kid', {
-					supported_coins: ["flo_testnet"]
+			var myWallet = new Wallet('found purchase heavy utility treat ripple army repeat century oxygen skill strategy', {
+					supported_coins: ["flo"]
 			})
 
 			if (execute) {
 				
-					console.log('This would be trigger a transaction and recipient address will be ocCQzLAopzWGmYxQMKQ5xLZDV2e62nEC5G')
+					console.log('This would be trigger a transaction and recipient address will be same')
 					// console.log('The total balance is: ' + this.balance)
 					console.log('The message would be: ')
 					console.log(msg)
 
 					myWallet.sendPayment({
-						to: { 'ocCQzLAopzWGmYxQMKQ5xLZDV2e62nEC5G' : 0.1 },
+						to: { 'FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h' : 0.01 },
 						floData: msg
 					}).then(function(txid){
 						console.log("Successfully sent Transaction! " + txid);
