@@ -4,7 +4,9 @@ const HDMW = require('oip-hdmw')
 const Wallet = HDMW.Wallet;
 
 const networks = HDMW.Networks;
-const address  = new HDMW.Address("FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h", networks.flo, false);
+const address  = new HDMW.Address("FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z", networks.flo, false);
+
+let mnemonic = process.env.OIPWALLET_MNEMONIC
 
 module.exports =
 class MyWallet {
@@ -19,7 +21,7 @@ class MyWallet {
 	init() {
 		this.wallet = new Promise((resolve, reject) => {
 			
-			console.log("My Wallets Bitcoin Main Address: ", 'FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h');
+			console.log("My Wallets Bitcoin Main Address: ", 'FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z');
 
 			address.updateState().then((addr) => {
 
@@ -40,7 +42,7 @@ class MyWallet {
 
 		return new Promise((res, rej) => {
 
-			var myWallet = new Wallet('found purchase heavy utility treat ripple army repeat century oxygen skill strategy', {
+			var myWallet = new Wallet(mnemonic, {
 					supported_coins: ["flo"]
 			})
 
@@ -52,7 +54,7 @@ class MyWallet {
 					console.log(msg)
 
 					myWallet.sendPayment({
-						to: { 'FHvFYxkeHiy7dTLuEjzERHUheQvYM2gZ7h' : 0.01 },
+						to: { 'FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z' : 0.01 },
 						floData: msg
 					}).then(function(txid){
 						console.log("Successfully sent Transaction! " + txid);
