@@ -16,11 +16,15 @@ npm install
 Now, you need to make and configure a file `.env` with the following information like this:
 
 ```bash
-FLOWALLET_USERNAME=your_user_name
-FLOWALLET_PASSWORD=your_password
-FLOWALLET_ADDRESS1=one_flo_address
-FLOWALLET_ADDRESS2=two_flo_address
+OIPWALLET_MNEMONIC = mnemonic_generated
+OIPWALLET_ADDRESS  = address_generated
 ```
+The mnemonic generation process is mentioned in
+https://github.com/oipwg/oip-hdmw#creating-your-first-wallet
+
+Address in https://github.com/oipwg/oip-hdmw/#getting-your-first-address
+
+<br/>
 
 Build the front-end:
 ```
