@@ -3,10 +3,11 @@
 const HDMW = require('oip-hdmw')
 const Wallet = HDMW.Wallet;
 
-const networks = HDMW.Networks;
-const address  = new HDMW.Address("FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z", networks.flo, false);
+let mnemonic    = process.env.OIPWALLET_MNEMONIC
+let floaddress  = process.env.OIPWALLET_ADDRESS
 
-let mnemonic = process.env.OIPWALLET_MNEMONIC
+const networks = HDMW.Networks;
+const address  = new HDMW.Address(floaddress, networks.flo, false);
 
 module.exports =
 class MyWallet {
@@ -21,7 +22,7 @@ class MyWallet {
 	init() {
 		this.wallet = new Promise((resolve, reject) => {
 			
-			console.log("My Wallets Bitcoin Main Address: ", 'FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z');
+			console.log("My Wallets Bitcoin Main Address: ", floaddress);
 
 			address.updateState().then((addr) => {
 
@@ -54,7 +55,7 @@ class MyWallet {
 					console.log(msg)
 
 					myWallet.sendPayment({
-						to: { 'FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z' : 0.01 },
+						to: { floaddress : 0.01 },
 						floData: msg
 					}).then(function(txid){
 						console.log("Successfully sent Transaction! " + txid);
