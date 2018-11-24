@@ -53,11 +53,12 @@ class MyWallet {
 					// console.log('The total balance is: ' + this.balance)
 					console.log('The message would be: ')
 					console.log(msg)
+				
+					let sendPaymentArg = '{ "to": { "'+ floaddress +'" : 0.01 },"floData": "' + msg + '","coin": "flo"}';
 
-					myWallet.sendPayment({
-						to: { floaddress : 0.01 },
-						floData: msg
-					}).then(function(txid){
+					let jsonObject = JSON.parse(sendPaymentArg);
+
+					myWallet.sendPayment(jsonObject).then(function(txid){
 						console.log("Successfully sent Transaction! " + txid);
 
 						res(txid)
