@@ -26,12 +26,7 @@ Address in https://github.com/oipwg/oip-hdmw/#getting-your-first-address
 
 <br/>
 
-Build the front-end:
-```
-npm run build
-```
-
-and start serving locally at the port 3000:
+Start serving locally at the port 3000:
 ```
 npm start
 ```
