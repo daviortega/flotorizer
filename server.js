@@ -8,14 +8,9 @@ const flotorize = require('./src/flotorize.js').flotorize
 
 const app = express()
 
-let username = process.env.FLOWALLET_USERNAME,
-	password = process.env.FLOWALLET_PASSWORD,
-	address1 = process.env.FLOWALLET_ADDRESS1,
-	address2 = process.env.FLOWALLET_ADDRESS2
-
 let WalletOperations = require('./src/walletOperations.js')
 
-let wallet = new WalletOperations(username, password, address1, address2)
+let wallet = new WalletOperations()
 
 wallet.init()
 const AH = require('./src/AlexandriaHelper')
@@ -62,12 +57,12 @@ app.get('/flotorize', function(req, res) {
 			})
 		}
 		else {
-			let sorryHtml = '<p>Yo, this transaction is already in the blockchain, cool huh?<p>'
-			sorryHtml += '<p>Hash: ' + hash + '</p>'
-			sorryHtml += '<p>Transaction: <a href=\'https://florincoin.info/tx/' + result.addr + '\'>' + result.addr + '</a></p>'
-			sorryHtml += '<p><a href=\'https://flotorizer.net\'>Try another file</a></p>'
-			console.log('Yup... let\'s tell them')
-			res.send(sorryHtml)
+			let alreadyThereHtml = '<p>This hash already exists in the FLO blockchain.<p>'
+			alreadyThereHtml += '<p>If you are trying to verify when this document was flotorized, please click in the link below'
+			alreadyThereHtml += '<p>Hash: ' + hash + '</p>'
+			alreadyThereHtml += '<p>Transaction: <a href=\'https://florincoin.info/tx/' + result.addr + '\'>' + result.addr + '</a></p>'
+			alreadyThereHtml += '<p><a href=\'https://flotorizer.net\'>Flotorize another file</a></p>'
+			res.send(alreadyThereHtml)
 		}
 	})
 })

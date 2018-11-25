@@ -1,6 +1,6 @@
 'use strict'
 
-require('./SimpleWalletFlorincoin.js')
+// require('./SimpleWalletFlorincoin.js')
 
 const PDFDocument = require('pdfkit')
 const path = require('path')

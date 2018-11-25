@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm public/*js public/*html; webpack --progress",
     "start": "node_modules/foreman/nf.js start",
+    "postinstall": "mkdir scratch",
     "server:dev": "webpack-dev-server --open",
     "heroku-postbuild": "webpack --progress"
   },
@@ -42,6 +43,7 @@
     "json-loader": "^0.5.7",
     "multer": "^1.3.0",
     "node-localstorage": "^1.3.0",
+    "oip-hdmw": "^1.3.5",
     "pdfkit": "^0.8.3",
     "qr-image": "^3.2.0",
     "style-loader": "^0.18.2",
