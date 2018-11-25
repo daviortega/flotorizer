@@ -486,8 +486,9 @@ Wallet = (function () {
 				callback(data);
 			}
 			_this.refreshBalances();
-		}, "json").fail(function () {
+		}, "json").fail(function (err) {
 			console.log('There was an error pushing your transaction. May be a temporary problem, please try again later.');
+			console.log(err.responseText)
 		});
 	};
 	Wallet.prototype.setBalance = function (address, balance) {
