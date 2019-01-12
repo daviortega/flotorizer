@@ -28,7 +28,7 @@ exports.flotorize = function(filename, hashString, wallet) {
 
 			doc.fontSize(12)
 				.moveDown()
-				.text('A document\'s sha-512 hash has just been inserted in the Florincoin blockchain. This means that a file with a specific format and content that yields to this specific hash existed at least prior to the date of the transaction. This is a proof-of-existance of such a file. Blockchains in cryptocurrencies are virtually impossible to be tampered with and this record will be available for verification virtually forever.')
+				.text('A document\'s sha-512 hash has just been inserted in the FLO blockchain. This means that a file with a specific format and content that yields to this specific hash existed at least prior to the date of the transaction. This is a proof-of-existance of such a file. Blockchains in cryptocurrencies are virtually impossible to be tampered with and this record will be available for verification virtually forever.')
 
 			doc.save()
 
