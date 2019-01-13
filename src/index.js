@@ -69,7 +69,7 @@ fileFormLabel.appendChild(fileForm)
 document.body.appendChild(fileFormLabel)
 
 let flotorized = document.createElement('div')
-// flotorized.innerHTML = 'Files flotorized: calculating...'
+flotorized.innerHTML = 'Keep flotorizer running. Put some FLO in FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z'
 document.body.appendChild(flotorized)
 
 let xhr = new XMLHttpRequest()
