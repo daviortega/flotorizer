@@ -1,6 +1,8 @@
 /* eslint-env browser */
 'use strict'
 
+const jsonPackage = require('../package.json')
+
 const CryptoJS = require('crypto-js')
 
 let kDefaults = {
@@ -15,7 +17,7 @@ require('./style.css')
 
 let title = document.createElement('h1')
 title.classList.add('title')
-title.innerHTML = 'Flotorizer 1.1-beta'
+title.innerHTML = `Flotorizer ${jsonPackage.version}-beta`
 document.body.appendChild(title)
 
 let logoDiv = document.createElement('div')

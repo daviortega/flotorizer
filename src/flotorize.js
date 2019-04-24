@@ -4,8 +4,9 @@ const PDFDocument = require('pdfkit')
 const path = require('path')
 const fs = require('fs')
 const qr = require('qr-image')
+const jsonPackage = require('../package.json')
 
-const defaultValue = 0.01
+const defaultValue = 0.001
 
 exports.flotorize = function(filename, hashString, coin) {
 	return new Promise(function(res, rej) {
@@ -34,7 +35,7 @@ exports.flotorize = function(filename, hashString, coin) {
 			doc
 				.scale(1)
 				.fontSize(30)
-				.text('Flotorizer 1.0', 225, 20)
+				.text(`Flotorizer ${jsonPackage.version}-beta`, 225, 20)
 
 			doc.fontSize(12)
 				.moveDown()
