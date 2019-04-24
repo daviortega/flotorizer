@@ -3,25 +3,22 @@
 const express = require('express'),
 	path = require('path'),
 	fs = require('fs')
-
 const flotorize = require('./src/flotorize.js').flotorize
 
 const app = express()
-
-let WalletOperations = require('./src/walletOperations.js')
-
-let wallet = new WalletOperations()
-
-wallet.init()
 const AH = require('./src/AlexandriaHelper')
 
+const HDMW = require('oip-hdmw')
+const Wallet = HDMW.Wallet
+const mnemonics = process.env.OIPWALLET_MNEMONIC
+const wallet = new Wallet(mnemonics, {discover: true, supported_coins: ['flo']})
+const coin = wallet.getCoin('flo')
+
 app.get('/stats', function(req, res, next) {
-	wallet.wallet.then((carteira) => {
-		const ah = new AH()
-		ah.getTotalFlotorizations().then((numOfFlotorizations) => {
-			res.send(numOfFlotorizations.toString())
-			next()
-		})
+	const ah = new AH()
+	ah.getTotalFlotorizations().then((numOfFlotorizations) => {
+		res.send(numOfFlotorizations.toString())
+		next()
 	})
 })
 
@@ -35,10 +32,11 @@ app.get('/flotorize', function(req, res) {
 
 	const ah = new AH()
 	console.log('Is it in the blockchain?')
+
 	ah.isInBlockChain(hash).then((result) => {
 		if (!result.exists) {
 			console.log('No! Let\'s make that happen')
-			flotorize(filename, hash, wallet).then(function(pdfFilename) {
+			flotorize(filename, hash, coin).then(function(pdfFilename) {
 				let pdfPath = path.resolve(__dirname, 'scratch', pdfFilename)
 				console.log('pdf is ready')
 				console.log(pdfFilename)

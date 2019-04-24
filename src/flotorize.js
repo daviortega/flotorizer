@@ -1,16 +1,26 @@
 'use strict'
 
-// require('./SimpleWalletFlorincoin.js')
-
 const PDFDocument = require('pdfkit')
 const path = require('path')
 const fs = require('fs')
 const qr = require('qr-image')
 
-exports.flotorize = function(filename, hashString, wallet) {
+const defaultValue = 0.01
+
+exports.flotorize = function(filename, hashString, coin) {
 	return new Promise(function(res, rej) {
 		let msg = 'This document has been flotorized: ' + hashString
-		wallet.pushToBlockChain(msg).then((data) => {
+		const address = coin.getMainAddress().getPublicAddress()
+		console.log(`FLO address is: ${address}`)
+		const to = {}
+		to[address] = defaultValue
+		coin.sendPayment({
+			to,
+			floData: msg,
+			coin: 'flo'
+		}).then((txid) => {
+			const data = txid
+			console.log('it worked')
 			let pdfFilename = 'Flotorizer.' + filename
 			if (pdfFilename.match('.pdf$') === null)
 				pdfFilename += '.pdf'
@@ -18,7 +28,7 @@ exports.flotorize = function(filename, hashString, wallet) {
 			let tempOutput = fs.createWriteStream(pdfPath)
 			console.log(filename)
 
-			let doc = new PDFDocument
+			let doc = new PDFDocument()
 			console.log('just created the instance')
 
 			doc
@@ -69,5 +79,10 @@ exports.flotorize = function(filename, hashString, wallet) {
 				res(pdfFilename)
 			})
 		})
+			.catch((err) => {
+				console.log('Something went wrong')
+				console.log(err)
+				rej(err)
+			})
 	})
 }

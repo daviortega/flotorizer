@@ -3,14 +3,9 @@
 const http = require('https')
 
 let defaultHttpOptions = {
-	method: 'POST',
-	hostname: 'api.alexandria.io',
-	headers: {},
-	agent: false,
-	'Content-Type': 'application/json'
+	method: 'GET',
+	hostname: 'api.oip.io'
 }
-
-const startingPage = 0
 
 module.exports =
 class AlexandriaHelper {
@@ -18,55 +13,13 @@ class AlexandriaHelper {
 		this.httpOptions = httpOptions ? httpOptions : defaultHttpOptions
 	}
 
-	isInBlockChain(hash) {
-		return this.getTransactionsPerPage_(hash, startingPage).then((tr) => {
-			console.log(tr)
-			console.log(tr.length)
-			const result = {
-				exists: false,
-				addr: ''
-			}
-			if (tr.length !== 0) {
-				result.exists = true
-				result.addr = tr[0].Hash
-			}
-			return result
-		})
-	}
-
-	getTotalFlotorizations() {
+	searchFLO(text) {
+		console.log('Asking OIP')
+		this.httpOptions.path = encodeURI(`/oip/floData/search?q=${text}`)
 		return new Promise((resolve, reject) => {
-			const tx = 'This document has been flotorized'
-			const trList = []
-
-			const getInfo = (t, p) => {
-				return this.getTransactionsPerPage_(t, p).then((newTr) => {
-					if (newTr.length !== 0) {
-						newTr.forEach((tr) => {
-							trList.push(tr)
-						})
-						return getInfo(t, p + 1)
-					}
-				})
-			}
-
-			getInfo(tx, startingPage).then(() => {
-				resolve(trList.length)
-			})
-		})
-	}
-
-	getTransactionsPerPage_(tx, page = startingPage) {
-		this.httpOptions.path = '/alexandria/v2/searchTxComment'
-		const content = {
-			search: tx,
-			page,
-			'results-per-page': 30
-		}
-		const trList = []
-		let data = ''
-		return new Promise((resolve, reject) => {
+			let data = ''
 			const req = http.request(this.httpOptions, (res) => {
+				//console.log(res.statusMessage)
 				if (res.statusCode !== 200)
 					reject(res)
 				res.on('data', (buffer) => {
@@ -79,21 +32,48 @@ class AlexandriaHelper {
 				})
 				res.on('end', () => {
 					if (data !== '') {
+						console.log(data)
 						const info = JSON.parse(data)
-						info.forEach((item) => {
-							trList.push(item)
-						})
-						resolve(trList)
+						resolve(info)
 					}
 					else {
 						resolve([])
 					}
-					// console.log(items)
 				})
 			})
-			req.write(JSON.stringify(content))
 			req.end()
 		})
-		http.request()
+	}
+
+	isInBlockChain(hash) {
+		console.log('Is in the blockchain?')
+		return this.searchFLO(hash).then((results) => {
+			console.log(results)
+			const result = {
+				exists: false,
+				addr: ''
+			}
+			if (results.total !== 0) {
+				result.exists = true
+				result.addr = results.results[0].tx.txid
+			}
+			return result
+		})
+			.catch((err) => {
+				console.log(err)
+				throw err
+			})
+	}
+
+	getTotalFlotorizations() {
+		console.log('total of flotorizations')
+		const msg = '"This document has been flotorized"'
+		return this.searchFLO(msg).then((results) => {
+			return results.total
+		})
+			.catch((err) => {
+				console.log(err)
+				throw err
+			})
 	}
 }
