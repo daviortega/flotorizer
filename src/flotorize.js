@@ -35,12 +35,11 @@ exports.flotorize = function(filename, hashString, coin) {
 			doc
 				.scale(1)
 				.fontSize(30)
-				.text(`Flotorizer ${jsonPackage.version}-beta`, 225, 20)
-
-			doc.fontSize(12)
+				.text('FLO Blockchain "Proof of Existance" Certificate')
 				.moveDown()
-				.text('A document\'s sha-512 hash has just been inserted in the FLO blockchain. This means that a file with a specific format and content that yields to this specific hash existed at least prior to the date of the transaction. This is a proof-of-existance of such a file. Blockchains in cryptocurrencies are virtually impossible to be tampered with and this record will be available for verification virtually forever.')
-
+				.fontSize(12)
+				.text('Flotorizer created unique SHA-512 hash for this file on [WE SHOULD ADD DATE AND TIME HERE] based on the file\'s unique features including its format, content, and size. The SHA-512 hash has been permanently appended to the decentralized FLO Blockchain network and it is now cryptographically associated with the original file.')
+		
 			doc.save()
 
 			doc.translate(50, 0)
@@ -55,12 +54,12 @@ exports.flotorize = function(filename, hashString, coin) {
 				.restore()
 
 			doc.translate(-200, 150)
-				.text('The document\'s hash is: ')
+				.text('The document\'s SHA-512 hash is:')
 				.fontSize(8)
 				.text(hashString, {width: 550})
 				.moveDown()
 				.fontSize(12)
-				.text('It is stored in the transaction:')
+				.text('It was stored and permentality appened to the FLO Blockchain via this FLO transaction:')
 				.fontSize(10)
 				.text(data, {width: 600})
 
@@ -71,7 +70,11 @@ exports.flotorize = function(filename, hashString, coin) {
 				.fontSize(10)
 				.text('https://florincoin.info/tx/' + data, {width: 600})
 				.moveDown()
-				.text('Or scan the QR-code bellow.')
+				.text('You can also find the transaction by scanning the QR-code below.')
+			
+				.moveDown()
+			
+				.text(`Flotorizer ${jsonPackage.version}`, 225, 20)
 
 			doc.pipe(tempOutput)
 			doc.end()
