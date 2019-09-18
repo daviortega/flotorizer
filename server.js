@@ -67,6 +67,7 @@ app.get('/flotorize', function(req, res) {
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'assets')))
+app.use('/floApp', express.static(path.join(__dirname, '/floApp')))
 
 let port = process.env.PORT || 3000
 

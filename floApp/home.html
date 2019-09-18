@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flotorizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+
+</head>
+
+
+<!-- Sidebar -->
+
+
+
+
+
+  <body>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="app.bundle.js"></script>
+    <!-- Page Content -->
+
+
+
+
+
+
+
+
+
+    <div class="toolbar-container">
+        <div class="toolbar">
+
+
+          <div id="main">
+            <div class="sidebar bar-block border-right" style="display:none" id="mySidebar">
+              <button onclick="menu_close()" class="bar-item large">&times;</button>
+              <br>
+              <a href="home.html" class="bar-item menu-button large">Notarize</a>
+              <a href="about.html" class="bar-item menu-button large">About</a>
+              <a href="certificate.html" class="bar-item menu-button large">Contact</a>
+            </div>
+          </div>
+
+          <button class="menu-icon" onclick="menu_open()">
+            <img border="0" alt="Menu_icon" src="Resources/images/icon.svg.png" width="30" height="30">
+          </button>
+
+
+          <div class="toolbar_title">
+            <h1>Flotorizer</h1>
+          </div>
+
+        </div>
+    </div>
+
+
+    <div class="animation-area">
+      <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+
+<div class="instructions-container">
+  <h2>Timestamp your files with immutable proof.</h2>
+  <br>
+  <h2>It's quick. It's easy.</h2>
+  <br>
+  <hr>
+  <ul>
+    <li>
+      <h2><u>Step 1</u></h2>
+      <br>
+      <p>Click <b>Choose a file</b></p>
+    </li>
+
+    <li>
+      <h2><u>Step 2</u></h2>
+      <br>
+      <p>Pick a file from your computer</p>
+    </li>
+
+    <li>
+      <h2><u>Step 3</u></h2>
+      <br>
+      <p>Safely store the exported PDF</p>
+      <br>
+    </li>
+  </ul>
+</div>
+
+
+
+
+    <div class="content-container">
+
+          <!-- <div class="text-container">
+            <h4>Files Flotorized:</h3>
+          </div>
+        -->
+
+
+
+          <label class="btn btn-primary" id="fileFormLabel" for="fileInput">
+            <div class="button-text">
+              Choose a file
+              <input id="fileInput" type="file" style="display: none;">
+            </div>
+          </label>
+
+          <br>
+
+          <div class="output-container">
+            <output class="hashed">
+              <!-- Output hash: -->
+            </output>
+          </div>
+
+          <div class="footer-text-container">
+            <h4>Consider donating to: FAcZMMWJddsj84EwT2gC36VxU2ifGwaZ7Z</h4>
+          </div>
+
+
+
+          <div class="powered-flo-container">
+            <div class="powered-flo">
+
+              <h3>Powered by FLO</h3>
+
+              <div class="flo-logo">
+                <img border="0" alt="FLO-icon" src="Resources/images/FLO_black_nobg.png" width="80" height="80">
+              </div>
+
+            </div>
+          </div>
+
+
+<!--
+          <div>
+            <form class="box" method="post" action="" enctype="multipart/form-data">
+
+              <div class="box__input">
+                <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+                <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                <button class="box__button" type="submit">Upload</button>
+              </div>
+
+              <div class="box__uploading">Uploading&hellip;</div>
+              <div class="box__success">Done!</div>
+              <div class="box__error">Error! <span></span>.</div>
+
+            </form>
+          </div>
+-->
+
+    </div>
+
+
+    <script src="./server.js"></script>
+    <script src="Javascript/menu.js"></script>
+    <script src="flotorizer-master/src/index.js"></script>
+    <script src="flotorizer-master/src/flotorize.js"></script>
+    <script type="text/javascript" src="vendor.bundle.js"></script>
+  </body>
+</html>
