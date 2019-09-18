@@ -1,9 +1,11 @@
 'use strict'
 
-const express = require('express'),
-	path = require('path'),
-	fs = require('fs')
+const express = require('express')
+const path = require('path')
+const fs = require('fs')
 const flotorize = require('./src/flotorize.js').flotorize
+const qr = require('qr-image')
+const pdf = require('html-pdf')
 
 const app = express()
 const AH = require('./src/AlexandriaHelper')
@@ -22,6 +24,12 @@ app.get('/stats', function(req, res, next) {
 	})
 })
 
+app.get('/qr', function(req,res){
+  var code = qr.image(req.param('text'), { type:'png', ec_level:'H', size:10, margin:0 })
+  res.setHeader('Content-type', 'image/png')
+  code.pipe(res)
+})
+
 app.get('/flotorize', function(req, res) {
 	console.log('got the request')
 	let hash = req.param('hs'),
@@ -36,7 +44,7 @@ app.get('/flotorize', function(req, res) {
 	ah.isInBlockChain(hash).then((result) => {
 		if (!result.exists) {
 			console.log('No! Let\'s make that happen')
-			flotorize(filename, hash, coin).then(function(pdfFilename) {
+			flotorize(filename, hash, coin, req).then(function(pdfFilename) {
 				let pdfPath = path.resolve(__dirname, 'scratch', pdfFilename)
 				console.log('pdf is ready')
 				console.log(pdfFilename)

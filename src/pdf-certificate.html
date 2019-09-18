@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Flotorizer Certificate</title>
+    <style>
+      html, body        { margin:0; padding:10px; font-family:Arial; }
+      .header           { padding:30px 15px; }
+      .header           { background-color:#666; color:white; }
+      .header .title    { font-size:20px; }
+      .header .subtitle { font-size:13px; margin-top:10px; }
+      table             { table-layout:fixed; width:100%; border-collapse:collapse; }
+      tr td             { padding:15px; border-bottom:1px solid #bbb; line-height:16px; font-size:10px; }
+      tr td.left        { width:155px; background-color:#ddd; line-height:14px; }
+      tr td.right       { word-wrap:break-word; }
+      .subtext          { margin-top:5px; font-size:7px; line-height:9px; }
+      .links            { line-height:14px; }
+      .link             { margin-bottom:10px; }
+      .link a           { text-decoration:none; color:#008; }
+      .qr-codes img     { width:80px; height:80px; margin:5px 30px 0 0; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="title"> Flotorizer Certficate </div>
+      <div class="subtitle"> Permanent and unalterable proof of existance of an electronic file </div>
+    </div>
+    <table>
+      <tr>
+        <td class="left"> Explanation of transaction: </td>
+        <td class="right"> A SHA-512 hash has been created of an electronic file and permanently recorded in the FLO blockchain. This blockchain record proves the existance of the given file at the time of the transaction based on comparing the recorded hash with any subsequent hash of the electronic file. </td>
+      </tr>
+      <tr>
+        <td class="left">
+          Transaction date and time: <br>
+          <div class="subtext">The time shown in the FLO blockchain may vary slightly due to transaction processing time.</div>
+        </td>
+        <td class="right"> {{datetime}} </td>
+      </tr>
+      <tr>
+        <td class="left"> The file's SHA-512 hash: </td>
+        <td class="right"> {{hash}} </td>
+      </tr>
+      <tr>
+        <td class="left"> The FLO transaction ID: </td>
+        <td class="right"> {{txid}} </td>
+      </tr>
+      <tr>
+        <td class="left">
+          Direct links to view the transaction in a FLO blockchain explorer:<br>
+          <div class="subtext">Please allow a few minutes for the transaction<br>to be added to the FLO blockchain.</div>
+        </td>
+        <td class="right links">
+          <div class="link"> <a href="{{url1}}" target="_blank">{{url1}}</a> </div>
+          <div class="link"> <a href="{{url2}}" target="_blank">{{url2}}</a> </div>
+          <div class="qr-codes">
+            <img src="{{protocol}}://{{host}}/qr?text={{encoded_url1}}" width="80" height="80" />
+            <img src="{{protocol}}://{{host}}/qr?text={{encoded_url2}}" width="80" height="80" />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="left"> Important notice: </td>
+        <td class="right"> It is important to maintain a secure copy of the original electronic file along with this PDF. The Flotorizer service did not upload or store the file. The file owner is solely responsible to preserve the original file in electronic form to facilitate future verifications.</td>
+      </tr>
+    </table>
+  </body>
+</html>
