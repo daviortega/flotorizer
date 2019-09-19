@@ -3,87 +3,49 @@
 const PDFDocument = require('pdfkit')
 const path = require('path')
 const fs = require('fs')
-const qr = require('qr-image')
 const jsonPackage = require('../package.json')
+const pdf = require('html-pdf')
 
 const defaultValue = 0.001
 
-exports.flotorize = function(filename, hashString, coin) {
+exports.flotorize = function(filename, hashString, coin, req) {
 	return new Promise(function(res, rej) {
 		let msg = 'This document has been flotorized: ' + hashString
 		const address = coin.getMainAddress().getPublicAddress()
 		console.log(`FLO address is: ${address}`)
 		const to = {}
 		to[address] = defaultValue
-		coin.sendPayment({
-			to,
-			floData: msg,
-			coin: 'flo'
-		}).then((txid) => {
-			const data = txid
-			console.log('it worked')
+		coin.sendPayment({ to, floData:msg, coin:'flo' }).then((txid) => {
+			console.log('It worked')
 			let pdfFilename = 'Flotorizer.' + filename
-			if (pdfFilename.match('.pdf$') === null)
-				pdfFilename += '.pdf'
+			if (pdfFilename.match('.pdf$') === null) pdfFilename += '.pdf'
 			let pdfPath = path.resolve(__dirname, '../scratch', pdfFilename)
-			let tempOutput = fs.createWriteStream(pdfPath)
-			console.log(filename)
 
-			let doc = new PDFDocument()
-			console.log('just created the instance')
+      fs.readFile('./src/pdf-certificate.html', function (err, html) {
+        console.log('The certificate template could not be found')
+    	  if (err) return console.log(err)
 
-			doc
-				.scale(1)
-				.fontSize(30)
-				.text(`Flotorizer ${jsonPackage.version}-beta`, 225, 20)
+  			html = html.toString()
+  			html = html.replace(/{{datetime}}/g, new Date().toISOString().replace(/T/, ' at ').replace(/\..+/, '') + ' (UTC)')
+  			html = html.replace(/{{hash}}/g, hashString)
+  			html = html.replace(/{{txid}}/g, txid)
+        html = html.replace(/{{protocol}}/g, req.protocol)
+        html = html.replace(/{{host}}/g, req.headers.host)
+        html = html.replace(/{{url1}}/g, 'https://livenet.flocha.in/tx/' + txid)
+  			html = html.replace(/{{url2}}/g, 'https://florincoin.info/tx/' + txid)
+        html = html.replace(/{{encoded_url1}}/g, encodeURI('https://livenet.flocha.in/tx/' + txid))
+        html = html.replace(/{{encoded_url2}}/g, encodeURI('https://florincoin.info/tx/' + txid))
 
-			doc.fontSize(12)
-				.moveDown()
-				.text('A document\'s sha-512 hash has just been inserted in the FLO blockchain. This means that a file with a specific format and content that yields to this specific hash existed at least prior to the date of the transaction. This is a proof-of-existance of such a file. Blockchains in cryptocurrencies are virtually impossible to be tampered with and this record will be available for verification virtually forever.')
-
-			doc.save()
-
-			doc.translate(50, 0)
-				.image(path.resolve(__dirname, 'flotorizer1.png'), 0, 15, {scale: 0.3})	
-
-			let qrtx = qr.svgObject('https://florincoin.info/tx/' + data)
-
-			doc.translate(210, 500).scale(2)
-				.path(qrtx.path)
-				.fill('black', 'even-odd')
-				.stroke()
-				.restore()
-
-			doc.translate(-200, 150)
-				.text('The document\'s hash is: ')
-				.fontSize(8)
-				.text(hashString, {width: 550})
-				.moveDown()
-				.fontSize(12)
-				.text('It is stored in the transaction:')
-				.fontSize(10)
-				.text(data, {width: 600})
-
-			doc.scale(1)
-				.moveDown()
-				.fontSize(12)
-				.text('Please allow for a few minutes for the transaction to be processed. After that you can find it at:', {width: 550})
-				.fontSize(10)
-				.text('https://florincoin.info/tx/' + data, {width: 600})
-				.moveDown()
-				.text('Or scan the QR-code bellow.')
-
-			doc.pipe(tempOutput)
-			doc.end()
-			tempOutput.on('finish', () => {
-				console.log('end')
-				res(pdfFilename)
-			})
+        pdf.create(html, {format:'Letter'}).toFile(pdfPath, function(err, rsp) {
+          if (err) return console.log(err)
+          console.log('PDF created')
+          res(pdfFilename)
+        })
+    	})
+		}).catch((err) => {
+			console.log('Something went wrong')
+			console.log(err)
+			rej(err)
 		})
-			.catch((err) => {
-				console.log('Something went wrong')
-				console.log(err)
-				rej(err)
-			})
 	})
 }
