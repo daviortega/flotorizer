@@ -27,3 +27,17 @@ function dragOverHandler(ev) {
   // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 }
+
+
+
+/*
+function fileUpload() {
+  document.querySelector('.file-upload__input').click();
+}
+
+const dropzone = document.querySelector('.file-upload__drop-zone');
+ const button = document.querySelector('.file-upload__btn--upload');
+
+dropzone.addEventListener('click', fileUpload);
+
+*/

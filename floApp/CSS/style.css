@@ -199,6 +199,48 @@ div {
 .border-right {
   border-right: 1px solid #949494 !important;
 }
+/* --------------------------- Drag and Drop --------------------------- */
+/*
+.file-upload {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.file-upload__input {
+
+}
+
+.file-upload__drop-zone {
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px dashed black;
+  outline-offset: -15px;
+  border: 0px solid black;
+  width:  500px;
+  height: 250px;
+  background-color: rgba(254, 254, 254,0.3);
+  font-size: 22px;
+}
+
+.file-upload__drop-zone:hover {
+  background-color: rgba(254, 254, 254,0.7);
+  transition: 0.25s;
+}
+
+.file-upload__drop-zone-text {
+
+}
+
+.file-upload__btn--upload {
+
+}
+
+*/
 
 /*
 .btn-primary {
@@ -237,7 +279,7 @@ div {
 }
 
 .btn-primary:hover {
-  
+
 }
 
 .button-text {
@@ -247,6 +289,39 @@ div {
 .output-container {
   text-align: center;
   margin-top: 30px;
+}
+
+.drag-drop-container {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  left: 50%;
+  margin-left: -250px;
+}
+
+#drop_zone {
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px dashed black;
+  outline-offset: -15px;
+  border: 0px solid black;
+  width:  500px;
+  height: 250px;
+  background-color: rgba(254, 254, 254,0.3);
+  font-size: 22px;
+}
+
+#drop_zone:hover {
+  background-color: rgba(254, 254, 254,0.7);
+  transition: 0.25s;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 15%;
+  left: 125px;
 }
 
 /* --------------------------- Powered by FLO --------------------------- */
@@ -584,37 +659,4 @@ hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-}
-
-.drag-drop-container {
-  display: flex;
-  position: fixed;
-  align-items: center;
-  left: 50%;
-  margin-left: -250px;
-}
-
-#drop_zone {
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: 1px dashed black;
-  outline-offset: -15px;
-  border: 0px solid black;
-  width:  500px;
-  height: 250px;
-  background-color: rgba(254, 254, 254,0.3);
-  font-size: 22px;
-}
-
-#drop_zone:hover {
-  background-color: rgba(254, 254, 254,0.7);
-  transition: 0.25s;
-}
-
-.upload-icon {
-  position: absolute;
-  top: 15%;
-  left: 125px;
 }
