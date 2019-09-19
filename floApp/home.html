@@ -126,13 +126,14 @@
         -->
 
 
-
+        <!--
           <label class="btn btn-primary" id="fileFormLabel" for="fileInput">
             <div class="button-text">
               Choose a file
               <input id="fileInput" type="file" style="display: none;">
             </div>
           </label>
+        -->
 
           <br>
 
@@ -161,27 +162,26 @@
           </div>
 
 
-<!--
-          <div>
-            <form class="box" method="post" action="" enctype="multipart/form-data">
 
-              <div class="box__input">
-                <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-                <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-                <button class="box__button" type="submit">Upload</button>
+          <div class="drag-drop-container">
+            <label class="btn btn-primary" id="fileFormLabel" for="fileInput">
+              <input id="fileInput" type="file" style="display: none;">
+              <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+
+                <div class="upload-icon">
+                  <img border="0" alt="FLO-icon" src="Resources/images/upload_icon.png" width="250" height="156" style="opacity:0.15;">
+                </div>
+
+                <p><b>Choose</b> a file or <b>Drag</b> it here ...</p>
+
               </div>
-
-              <div class="box__uploading">Uploading&hellip;</div>
-              <div class="box__success">Done!</div>
-              <div class="box__error">Error! <span></span>.</div>
-
-            </form>
+            </label>
           </div>
--->
+
 
     </div>
 
-
+    <script src="Javascript/drag-drop.js"></script>
     <script src="./server.js"></script>
     <script src="Javascript/menu.js"></script>
     <script src="flotorizer-master/src/index.js"></script>

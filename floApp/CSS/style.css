@@ -200,6 +200,7 @@ div {
   border-right: 1px solid #949494 !important;
 }
 
+/*
 .btn-primary {
   width: 160px;
   height: 48px;
@@ -225,6 +226,18 @@ div {
   color: white;
   z-index: 51;
   transition: 0.25s;
+}
+
+*/
+
+.btn-primary {
+  z-index: 50;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  
 }
 
 .button-text {
@@ -571,4 +584,37 @@ hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+
+.drag-drop-container {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  left: 50%;
+  margin-left: -250px;
+}
+
+#drop_zone {
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px dashed black;
+  outline-offset: -15px;
+  border: 0px solid black;
+  width:  500px;
+  height: 250px;
+  background-color: rgba(254, 254, 254,0.3);
+  font-size: 22px;
+}
+
+#drop_zone:hover {
+  background-color: rgba(254, 254, 254,0.7);
+  transition: 0.25s;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 15%;
+  left: 125px;
 }
