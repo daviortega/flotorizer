@@ -67,7 +67,7 @@ app.get('/flotorize', function(req, res) {
 			alreadyThereHtml += '<p>If you are trying to verify when this document was flotorized, please click in the link below'
 			alreadyThereHtml += '<p>Hash: ' + hash + '</p>'
 			alreadyThereHtml += '<p>Transaction: <a href=\'https://florincoin.info/tx/' + result.addr + '\'>' + result.addr + '</a></p>'
-			alreadyThereHtml += '<p><a href=\'https://flotorizer.net\'>Flotorize another file</a></p>'
+			alreadyThereHtml += '<p><a href=\'http://flotorizer.net\'>Flotorize another file</a></p>'
 			res.send(alreadyThereHtml)
 		}
 	})

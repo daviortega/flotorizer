@@ -1,37 +1,43 @@
 body {
-    display: block;
     text-align: center;
+    padding-top: 10px;
 }
 
-.logo {
-    position: absolute;
-    top: 120px;
-    left: 50%;
-
-    width: 300px;
-    margin-left: -150px;
+.logo  {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .hashed {
-    display: block;
-    text-align: center;
-
-    margin-top: 450px;
+    margin: 10px auto 50px auto;
+    width: 370px;
+    word-wrap:break-word;
 }
 
 .btn-primary {
-    position:absolute;
-    left:50%;
-    top:450px;
-    width: 300px;
+    width: 200px;
     height: 40px;
-
-    margin-left: -150px;
-    margin-top: -20px;
-
-    background-color: #33373d;
-    border-color: #33373d;
-    color: #bba600;
-
+    background-color: #998600;
+    border-color: #998600;
+    color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 7px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: #776400!important;
+    border-color: #776400!important;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 11px;
+}
+
+.footer a, .footer a:hover, .footer a:active {
+    color: black;
+    text-decoration: underline;
 }
